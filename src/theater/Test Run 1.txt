@@ -1,0 +1,158 @@
+Welcome to the half-baked theater management system!
+Please complete the initial informational survey and then choose an option from the menu.
+Please enter your theater's name:  My Theater
+Please enter the monthly cost to rent your theater (include utilities):  200
+How many box seats does your theater have?  25
+How many regular seats does your theater have?  75
+How much is the theater's yearly operating budget?  25000
+MAIN: Please choose from the follwoing options:
+  1) Manage Employees
+  2) Add Play/Show/Item
+  3) Customers/Reservations
+  4) Accounting
+  5) Exit
+2
+Please choose from one of the following options:
+  1) Add a Play
+  2) Add a Show
+  3) Add a Rental Item
+  4) Main Menu
+1
+Please enter the play name:  Silly play
+Please enter the play author:  Silly Authot
+Please enter the year the play was published (yyyy):  1942
+Please enter the if this the play's world premier(y/n):  y
+Please enter the cost to rent the play (####.##):  6.99
+Please choose from one of the following options:
+  1) Add a Play
+  2) Add a Show
+  3) Add a Rental Item
+  4) Main Menu
+2
+Please confirm which Play:
+Silly play (y/n):  y
+Please enter date of the show (mm-dd-yyyy):  04-01-2014
+Is this a matinee(y/n):  y
+How much is the base price for your box seats?  50
+How much is the base price for your regular seats?  25
+Please choose from one of the following options:
+  1) Add a Play
+  2) Add a Show
+  3) Add a Rental Item
+  4) Main Menu
+3
+Please enter the name of the item to add.
+Table
+Please enter the cost per show to rent this item.
+35
+Please choose from one of the following options:
+  1) Add a Play
+  2) Add a Show
+  3) Add a Rental Item
+  4) Main Menu
+4
+MAIN: Please choose from the follwoing options:
+  1) Manage Employees
+  2) Add Play/Show/Item
+  3) Customers/Reservations
+  4) Accounting
+  5) Exit
+1
+Please choose from one of the following options:
+  1) Hire an Actor
+  2) Hire a Director
+  3) Fire an Employee
+  4) Main Menu
+1
+Please enter the Actor/Actress's first name:  Mighty
+Please enter the Actor/Actress's last name:  Mouse
+Please enter the Actor/Actress's date of birth (mm-dd-yyyy):  01-01-1989
+Please enter the Actor/Actress's street address:  42 Mexico Ln
+Please enter the Actor/Actress's state:  TX
+Please enter the Actor/Actress's zip code:  75666
+Does this Actor/Actress's have actor's equity (y/n)?  y
+Please enter the Actor/Actress's pay per hour:  1.25
+Please enter which play the Actor/Actress's was hired:  To be or not to be
+Please enter the Actor/Actress's role name:  Hero1
+Please enter the Actor/Actress's shirt size:  2
+Please enter the Actor/Actress's pant size:  3
+Please enter the Actor/Actress's clothes gender (m/f):  m
+Please choose from one of the following options:
+  1) Hire an Actor
+  2) Hire a Director
+  3) Fire an Employee
+  4) Main Menu
+2
+Directors no implemented yet.
+Please choose from one of the following options:
+  1) Hire an Actor
+  2) Hire a Director
+  3) Fire an Employee
+  4) Main Menu
+3
+Please confirm which actor/actress to fire:
+Mighty Mouse(y/n):  y
+Please choose from one of the following options:
+  1) Hire an Actor
+  2) Hire a Director
+  3) Fire an Employee
+  4) Main Menu
+4
+MAIN: Please choose from the follwoing options:
+  1) Manage Employees
+  2) Add Play/Show/Item
+  3) Customers/Reservations
+  4) Accounting
+  5) Exit
+3
+Please choose from one of the following options:
+  1) Add Customer
+  2) Make Reservation
+  3) Main Menu
+1
+Please enter the customer's first name:  Marcus
+Please enter the customer's last name:  Mirzaie
+Please enter the customer's date of birth (mm-dd-yyyy):  08-01-1983
+Please enter the customer's street address:  4845 Ash Glen Ln
+Please enter the customer's state:  TX
+Please enter the customer's zip code:  75056
+Please choose from one of the following options:
+  1) Hire an Actor
+  2) Hire a Director
+  3) Fire an Employee
+  4) Main Menu
+4
+MAIN: Please choose from the follwoing options:
+  1) Manage Employees
+  2) Add Play/Show/Item
+  3) Customers/Reservations
+  4) Accounting
+  5) Exit
+3
+Please choose from one of the following options:
+  1) Add Customer
+  2) Make Reservation
+  3) Main Menu
+2
+Please confirm which attendee is reserving:
+Marcus Mirzaie(y/n):  y
+Please confirm which Play:
+Silly play (y/n):  y
+Please choose a showing:
+Sat Jan 04 00:00:00 CST 2014 Matinee (y/n):  y
+Would you like a box seat (y/n)?  y
+MAIN: Please choose from the follwoing options:
+  1) Manage Employees
+  2) Add Play/Show/Item
+  3) Customers/Reservations
+  4) Accounting
+  5) Exit
+4
+Not yet implemented.
+MAIN: Please choose from the follwoing options:
+  1) Manage Employees
+  2) Add Play/Show/Item
+  3) Customers/Reservations
+  4) Accounting
+  5) Exit
+5

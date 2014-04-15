@@ -1,0 +1,198 @@
+Test class main routine should check all of the following.  This means that each 
+element below is considered a test case for your classes:
+1)  Sell tickets to attendees for a specific seat at a specific showing of a play
+-2)  Rent items for the play
+-3)  Hire an actor or director – add them to the payroll
+4)  Pay an actor/director  -  see details below for payment methods
+5)  Remove (fire) an actor /director (Settle accounts and remove)
+6)  Display all actor/director details  
+7)  Display all attendee details (including name, date to attend, seats) 
+8)  Display all play details (all shows, all actors and directors) 
+9)  Display all show details (date, day, and time, all seats (box and regular), tickets sold) 
+10) Display current theatre finances (current ticket sales and payroll for the next month)
+11) Hire a theatre staff member or theatre manager
+12) Pay a theatre staff member / manager
+13) Remove a theatre staff member / manager
+14) Have an investor support a play at the theatre (put money in the theatre bank acct)
+15) Modify values for hourly pay and hours worked for all persons
+16) Modify ticket prices for a specific show
+0)  Exit program 
+
+A. The Theater class should contain the following data and methods:
+Data members:
+1. Has a name
+2. Has a current play showing on multiple dates and days (has list of multiple shows)
+3. Has different prices for different show days
+   a. Friday and Saturday night price
+   b. Saturday and Sunday matinee price (a percentage of the Fri/Sat night price)
+   c. Sunday night price (a different percentage of the Fri/Sat night price)
+4. Has a number of seats in the theatre
+   a. Number of regular seats
+   b. Number of box seats 
+5. Has a maximum yearly operating budget
+6. Keep track of rented items for show (using a collection class)
+7. Has a bank account for its operating budget
+8. Has a list of staff and a payroll 
+
+
+Methods:
+a. Sells tickets to a show 
+b. Accepts payments from attendees 
+c. Keeps track of how many tickets have been sold
+d. Refunds ticket payments
+e. Keeps track of sales of tickets as a monetary total
+f. Pays employees (theatre staff, manager, actors, director)
+g. Hires and fires employees
+h. Keeps track of how many actors/directors are currently working on a given play
+i. Pays actors/directors at the end of each week, adjusting the operating budget as necessary
+j. Pays theatre staff and manager at end of each month, adjusting the operating budget as necessary
+k. Displays all plays, actors, attendees, etc. in a tabular formatted manner
+
+B.  The Play class has the following features	EXAMPLE
+1.  Title					Cabaret
+2.  Author					Jay Allen
+3.  Year published				1972
+4.  Opening date				March 31, 2014
+5.  World premier 				boolean
+6.  Play usage rental 				$8400.00
+7.  End date					April 15, 2014
+8.  Total number of shows			11
+9.  List of actors
+10.  Director
+
+
+The Show class has
+1. Date (day, month, year)
+2. Day of the week
+3. Time of the show (night or matinee or special)
+4. Has a number of seats per show
+	4.a. Regular seat cost (based on show day price)
+	4.b. Box seat ticket cost (a percentage over the show day price)
+5. Has a list of tickets sold (one ticket per seat)
+6. The play being shown
+
+
+C. The Person class has the following attributes    EXAMPLE
+1. First name                                       Jaya
+2. Last name                                        Smith
+3. Identification number                            006
+4. Address                                          123 Sesame St., NY, NY 10001
+5. Birthdate                                        July 4, 1963
+6. Hire date                                        November 1, 2012
+7. Bank account                                     from BankAccount class
+
+
+The Actor class has the following attributes        EXAMPLE
+Inherits data fields from person class
+5. Hired for which play                             Cabaret
+6. Pay scale per hour                               $12.00
+7. Actor's Equity?                                  boolean
+8. Role                                             Character name
+9. Hours worked per week                            15
+
+The method for CalculatePay for an actor is to pass in the pay scale per hour, 
+the hours worked for week, and a 1 if the Actor's Equity boolean is true or 0 if 
+false.  The pay is then calculated one of two ways based on the boolean value.  
+
+If the Actor's Equity boolean was false then the 
+actor's pay equals pay per hour * hours per week 
+If the Actor's Equity boolean was true then the pay calculation is:
+actor's pay equals pay per hour * hours per week PLUS
+	the greater of ((hours per week – 40) * pay per hour)  OR 0 (zero)
+[ Basically, there is extra pay for over 40 hours a week if the actor is part of Equity]
+
+
+The Director class has the following attributes 		EXAMPLE
+Inherits data fields from person class
+5. Hired for which play				Cabaret
+6. Pay scale per hour					$30.00
+7. Actor's Equity?					boolean
+8.  Up front fee					$450.00
+9.  Percentage of house				15%
+10.  Hours worked per week			50
+
+The method for CalculatePay for a director is to pass in the up front fee, the pay 
+scale per hour, and a 1 if the Actor's Equity boolean is true or 0 if false.  The 
+pay is then calculated one of two ways based on the boolean value.  
+If the Actor's Equity boolean was false then the 
+actor's pay equals up front fee
+If the Actor's Equity boolean was true then the pay calculation is:
+actor's pay equals up front fee PLUS
+	the greater of ((hours per week – 40) * pay per hour)  OR 0 (zero)
+[ There is extra pay for over 40 hours a week if the director is part of Equity]
+
+Directors will also have a method for PerformancePay which will be based on the 
+total ticket sales for all shows taking the gross revenue for ticket sales and 
+determining 15% of the gross revenue.  This percentage of the house is the pay 
+the director receives for the complete run of the play and all performances.
+
+
+The Attendee class has the following attributes 	EXAMPLE
+Inherits data fields from person class
+5. Attending which play				Cabaret
+6. Ticket price category				$20.00
+7.Number of tickets					integer
+8. Date of tickets					March 19, 2014
+9. Which show? (Eve or matinee)			(use an enum here)
+
+
+The theater Staff member class has the following attributes 	
+Inherits data fields from person class
+5. Work position			USHER (enum with TICKETSELLER, CONCESSIONS)
+6. Pay scale per hour			$8.25
+7. Hours worked per week		22
+8. Days worked each week		THURSDAY, SATURDAY  (enum type of all days)
+9. Number of weeks worked this month	4.5  (one extra Thursday worked)
+
+The method for CalculatePay for a theater staff member is to pass in the pay scale per hour, the hours worked for week, and a number of weeks worked in the current month.  The theatre staff member's pay monthly pay is :  
+pay per hour * hours per week * weeks worked in current month
+
+
+The theater Manager class has the following attributes 	
+Inherits data fields from person class
+5. Number of staff members		14
+6. Weekly pay rate			$800.00
+7. Vacation weeks taken in month 	1  (this will often be 0)
+8. Days worked each week		THURSDAY, FRIDAY, SUNDAY  (enum type of all days)
+9. Total weeks in this month	4.5  (indicates 31 days in month)
+
+The method for CalculatePay for a theater manger is to pass in the weekly pay rate, the number of vacation weeks taken in the month and the total number of weeks in the current month.  The manager pay is then :  
+ weekly pay rate * (total weeks in month – vacation weeks taken in month)
+
+
+The Investor class has the following attributes 	
+Inherits data fields from person class
+5. Amount invested			double
+6. Tickets received			int
+7. Percentage of house		percentage 
+
+
+D.  Interface for CalculatePay as 
+double CalculatePay(double Amt1, double Amt2, double Amt3);
+
+E.  Class for BankAccount has the following attributes:
+1.  Current total 					double 
+2.  List of last three payment transactions made
+3.  List of last three deposit transactions received 
+4.  Receiving direct deposit?				Boolean
+5.  Account number
+
+Class for AccountTransaction
+1.  Payee					object of Theater or Person class
+2.  Payer					object of Theater or Person class
+3.  Amount					double
+4.  Reason					String "ticket sale", "weekly pay", etc.
+
+Program Requirements
+For Lab #3 you should 
+1)	define classes for all the described elements above,
+2)	use inheritance to create at least three of the classes,
+3)	use Bank Account and AccountTransaction to handle money transactions,
+4)	create a ticket class which includes a price, a date, time, and seat number
+5)	keep data members private unless otherwise instructed
+6)	create get and set methods for all private data members
+7)	create toString and/or display methods for all classes (other than the test class)
+8)	create constructors and initialize objects as needed
+9)	read initial data in from a input file (using a Scanner object connected to the file)
+10)	 output information to the user in GUI windows
+11)	 Use Javadoc commands to comment your code and generate the Javadoc documentation to submit with the assignment
