@@ -23,26 +23,26 @@ package theater;
 public class Account 
 {
     private double curTotal;     // Current contribution(-)/pay(+)
-    private double[] lastThreePayments = new double[3];
-    private double[] lastThreeDeposits = new double[3];
+    private String[] lastThreePayments = new String[3];
+    private String[] lastThreeDeposits = new String[3];
     private boolean directDeposit;
     private int accountNumber;
     
     static private int accountPool = 0;
     
-    public void recieveDeposit(double amt)
+    public void recieveDeposit(double amt, String reason)
     {
         curTotal = curTotal + amt;
         lastThreeDeposits[2] = lastThreeDeposits[1];
         lastThreeDeposits[1] = lastThreeDeposits[0];
-        lastThreeDeposits[0] = amt;
+        lastThreeDeposits[0] = reason;
     }
-    public void givePayment(double amt)
+    public void givePayment(double amt, String reason)
     {
         curTotal = curTotal - amt;
         lastThreePayments[2] = lastThreePayments[1];
         lastThreePayments[1] = lastThreePayments[0];
-        lastThreePayments[0] = amt;
+        lastThreePayments[0] = reason;
     }
     /**
      * Default constructor
@@ -92,7 +92,7 @@ public class Account
     /**
      * @return the lastThreePayments
      */
-    public double[] getLastThreePayments()
+    public String[] getLastThreePayments()
     {
         return lastThreePayments;
     }
@@ -100,7 +100,7 @@ public class Account
     /**
      * @return the lastThreeDeposits
      */
-    public double[] getLastThreeDeposits()
+    public String[] getLastThreeDeposits()
     {
         return lastThreeDeposits;
     }

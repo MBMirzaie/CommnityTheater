@@ -21,8 +21,7 @@ public class Transaction
 {
     public Transaction(Account payee, Account payer, double amt, String reason)
     {
-        payee.recieveDeposit(amt);
-        payer.givePayment(amt);
-        System.out.println(reason + ": $" + amt);
+        payee.recieveDeposit(amt, reason);
+        payer.givePayment(amt, reason);
     }
 }
