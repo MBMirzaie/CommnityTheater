@@ -32,9 +32,9 @@ public class Manager extends Person
     private Days[] days = new Days[7];
     private double totalWeeksThisMonth;
 
-    public Manager(double weeklyPayRate, int vacationWeeksTakenInMonth, double totalWeeksThisMonth, Days[] days, String lastName, String firstName, Date dateOfBirth, Address address)
+    public Manager(double weeklyPayRate, int vacationWeeksTakenInMonth, double totalWeeksThisMonth, Days[] days, String lastName, String firstName, Date dateOfBirth, Date hireDate, Address address)
     {
-        super(lastName, firstName, dateOfBirth, address);
+        super(lastName, firstName, dateOfBirth, hireDate, address);
         this.weeklyPayRate = weeklyPayRate;
         this.vacationWeeksTakenInMonth = vacationWeeksTakenInMonth;
         this.totalWeeksThisMonth = totalWeeksThisMonth;

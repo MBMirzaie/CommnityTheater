@@ -27,9 +27,76 @@ public class Theater extends Account
     private double yearlyOperatingBudget;   // Yearly operating budget
     private List<Show> shows;               // The shows on the schedule
     private List<Customer> attendees;       // List of paying customers
-    private Person[] credits;             // List of employees
+    private List<Actor> actors;             // List of actors
+    private List<Director> directors;       // List of directors
+    private List<Manager> managers;         // List of managers
+    private List<Staff> staff;              // List of staff members
+    private List<Investor> investors;       // List of investors
     private int currentMenu;                // Which menu to display options for
-    private List<RentalItem> rentItems;      // Items rented for shows
+    private List<RentalItem> rentItems;     // Items rented for shows
+
+    public List<Actor> getActors()
+    {
+        return actors;
+    }
+
+    public void setActors(List<Actor> actors)
+    {
+        this.actors = actors;
+    }
+
+    public List<Director> getDirectors()
+    {
+        return directors;
+    }
+
+    public void setDirectors(List<Director> directors)
+    {
+        this.directors = directors;
+    }
+
+    public List<Manager> getManagers()
+    {
+        return managers;
+    }
+
+    public void setManagers(List<Manager> managers)
+    {
+        this.managers = managers;
+    }
+
+    public List<Staff> getStaff()
+    {
+        return staff;
+    }
+
+    public void setStaff(List<Staff> staff)
+    {
+        this.staff = staff;
+    }
+
+    public List<Investor> getInvestors()
+    {
+        return investors;
+    }
+
+    public void setInvestors(List<Investor> investors)
+    {
+        this.investors = investors;
+    }
+
+    public List<RentalItem> getRentItems()
+    {
+        return rentItems;
+    }
+
+    public void setRentItems(List<RentalItem> rentItems)
+    {
+        this.rentItems = rentItems;
+    }
+    private double friSatEvePrice;
+    private double sunEvePrice;
+    private double satSunMatPrice;
 
 
     /**
@@ -39,17 +106,21 @@ public class Theater extends Account
      */
     public Theater(String theaterName, double rentalCost)
     {
-        this.theaterName = theaterName;
-        this.rentalCost = rentalCost;
-        this.plays = new ArrayList();
-        this.boxSeats = 0;
-        this.regSeats = 0;
-        this.yearlyOperatingBudget = 0;
-        this.shows = new ArrayList();
-        this.attendees = new ArrayList();
-        this.credits = new Person[1000];
-        this.currentMenu = 0;
-        this.rentItems = new ArrayList();
+        this.theaterName            = theaterName;
+        this.rentalCost             = rentalCost;
+        this.plays                  = new ArrayList();
+        this.boxSeats               = 0;
+        this.regSeats               = 0;
+        this.yearlyOperatingBudget  = 0;
+        this.shows                  = new ArrayList();
+        this.attendees              = new ArrayList();
+        this.actors                 = new ArrayList();
+        this.directors              = new ArrayList();
+        this.managers               = new ArrayList();
+        this.staff                  = new ArrayList();
+        this.investors              = new ArrayList();
+        this.currentMenu            = 0;
+        this.rentItems              = new ArrayList();
     }
     
     /**
@@ -116,22 +187,6 @@ public class Theater extends Account
         this.attendees = attendees;
     }
 
-    /**
-     * @return the list of employees
-     */
-    public Person[] getCredits()
-    {
-        return credits;
-    }
-
-    /**
-     * @param credits set list of employees
-     */
-    public void setCredits(Person[] credits)
-    {
-        this.credits = credits;
-    }
-    
     // Information gathering functions
     
     public void getTheaterInformation()
@@ -191,7 +246,7 @@ public class Theater extends Account
                 this.hireDirector();
                 break;
             case 8:     // empMenu 3
-                this.fireEmployee();
+                this.fireActor();
                 break;
             case 9:     // empMenu 4
                 this.setCurrentMenu(0);
@@ -227,8 +282,8 @@ public class Theater extends Account
         String menu;
         menu = new String("MAIN: Please choose from the follwoing options:\n" +
                           "  1) Manage Employees\n" + 
-                          "  2) Add Play/Show/Item\n" +
-                          "  3) Customers/Reservations\n" +
+                          "  2) Manage Play/Show/Item\n" +
+                          "  3) Manage Customers/Reservations\n" +
                           "  4) Accounting\n" +
                           "  5) Reports\n" +
                           "  6) Exit\n");
@@ -238,9 +293,9 @@ public class Theater extends Account
     {
         String menu;
         menu = new String("Please choose from one of the following options:\n" +
-                          "  1) Hire an Actor\n" +
-                          "  2) Hire a Director\n" +
-                          "  3) Fire an Employee\n" +
+                          "  1) Hire an Employee\n" +
+                          "  2) Fire an Employee\n" +
+                          "  3) Pay an Employee\n" +
                           "  4) Main Menu\n");
         int tmp1 = this.getInt(menu);
         this.setCurrentMenu((tmp1 == 0)?1:tmp1+6);
@@ -256,14 +311,6 @@ public class Theater extends Account
         int tmp1 = this.getInt(menu);
         this.setCurrentMenu((tmp1 == 0)?1:tmp1+10);
     }
-    public void addItem()
-    {
-        String tmp; double tmp2;
-        tmp = this.getString("Please enter the name of the item to add.");
-        tmp2 = this.getDouble("Please enter the cost per show to rent this item.");
-        this.rentItems.add(new RentalItem(tmp,tmp2));
-        this.setCurrentMenu(2);
-    }
     public void reserveMenu()
     {
         String menu;
@@ -273,6 +320,51 @@ public class Theater extends Account
                           "  3) Main Menu\n");
         int tmp1 = this.getInt(menu);
         this.setCurrentMenu((tmp1 == 0)?1:tmp1+14);
+    }
+    public void hireEmployeeMenu()
+    {
+        String menu;
+        menu = new String("Please choose from one of the following options:\n" +
+                           "  1) Hire Actor\n" +
+                           "  2) Hire Director\n" +
+                           "  3) Hire Manager\n" +
+                           "  4) Hire Staff\n" +
+                           "  5) Main Menu\n");
+        int tmp1 = this.getInt(menu);
+        this.setCurrentMenu(tmp1);
+    }
+    public void fireEmployeeMenu()
+    {
+        String menu;
+        menu = new String("Please choose from one of the following options:\n" +
+                          "  1) Fire Actor\n" +
+                          "  2) Fire Director\n" +
+                          "  3) Fire Manager\n" +
+                          "  4) Fire Staff\n" +
+                          "  5) Main Menu\n");
+        int tmp1 = this.getInt(menu);
+        this.setCurrentMenu(tmp1);
+    }   
+    public void payEmployeeMenu()
+    {
+        String menu;
+        menu = new String("Please choose from one of the following options:\n" +
+                          "  1) Pay Actor\n" +
+                          "  2) Pay Director\n" +
+                          "  3) Pay Manager\n" +
+                          "  4) Pay Staff\n" +
+                          "  5) Pay Employees\n" +
+                          "  6) Main Menu\n");
+        int tmp1 = this.getInt(menu);
+        this.setCurrentMenu(tmp1);
+    }        
+    public void addItem()
+    {
+        String tmp; double tmp2;
+        tmp = this.getString("Please enter the name of the item to add.");
+        tmp2 = this.getDouble("Please enter the cost per show to rent this item.");
+        this.rentItems.add(new RentalItem(tmp,tmp2));
+        this.setCurrentMenu(2);
     }
     public void acctMenu()
     {
@@ -287,22 +379,14 @@ public class Theater extends Account
             this.setCurrentMenu(1);
             return;
         }
-        int placement = 0;
-        for(int i=0;i<1000;i++)
-        {
-            if(this.credits[i] == null)
-            {
-                placement = i;
-                break;
-            }
-        }
         String roleName, hiredWhichPlay, lastName, firstName, street, state; 
         int hoursWorkedPerWeek, zip;
         double payScalePerHour;
-        boolean actorsEquity; Date dateOfBirth; Address address;
+        boolean actorsEquity; Date dateOfBirth, hireDate; Address address;
         firstName = this.getString("Please enter the Actor/Actress's first name:  ");
         lastName = this.getString("Please enter the Actor/Actress's last name:  ");
         dateOfBirth = this.getDate("Please enter the Actor/Actress's date of birth (mm-dd-yyyy):  ");
+        hireDate = this.getDate("Please enter the Actor/Actress's hire date (mm-dd-yyyy):  ");
         street = this.getString("Please enter the Actor/Actress's street address:  ");
         state = this.getString("Please enter the Actor/Actress's state:  "      );
         zip = this.getInt("Please enter the Actor/Actress's zip code:  ");
@@ -313,9 +397,69 @@ public class Theater extends Account
         roleName = this.getString("Please enter the Actor/Actress's role name:  ");
         hoursWorkedPerWeek = this.getInt("Please enter number of hours the Actor/Actress works per week:  ");
 
-        this.credits[placement] = new Actor(hoursWorkedPerWeek, this.findPlayByName(hiredWhichPlay), roleName, payScalePerHour, actorsEquity, lastName, firstName, dateOfBirth, address);
+        actors.add(new Actor(hoursWorkedPerWeek, this.findPlayByName(hiredWhichPlay), roleName, payScalePerHour, actorsEquity, lastName, firstName, dateOfBirth, hireDate, address));
         this.setCurrentMenu(1);
     }
+    public void hireDirector()
+    {
+        System.out.println("Directors no implemented yet.");
+        this.setCurrentMenu(1);
+    }
+    public void fireManager()
+    {
+        System.out.printf("Please confirm which Manager to fire:\n");
+        for(Manager d:managers)
+        {
+            if(this.getString(String.format("%s %s(y/n):  ",d.getFirstName(),d.getLastName())).startsWith("y")) 
+            {   
+                
+                managers.remove(d);
+                break;
+            }   
+        }
+        this.setCurrentMenu(1);
+    }
+    public void fireStaff()
+    {
+        System.out.printf("Please confirm which actor/actress to fire:\n");
+        for(Staff d:staff)
+        {
+            if(this.getString(String.format("%s %s(y/n):  ",d.getFirstName(),d.getLastName())).startsWith("y")) 
+            {
+                staff.remove(d);
+                break;
+            }   
+        }
+        this.setCurrentMenu(1);
+    }
+    public void fireActor()
+    {
+        System.out.printf("Please confirm which actor to fire:\n");
+        for(Actor d:actors)
+        {
+            if(this.getString(String.format("%s %s(y/n):  ",d.getFirstName(),d.getLastName())).startsWith("y")) 
+            {
+                actors.remove(d);
+                break;
+            }   
+        }
+        this.setCurrentMenu(1);
+    }
+    public void fireDirector()
+    {
+        System.out.printf("Please confirm which director to fire:\n");
+        for(Director d:directors)
+        {
+            if(this.getString(String.format("%s %s(y/n):  ",d.getFirstName(),d.getLastName())).startsWith("y")) 
+            {
+                directors.remove(d);
+                break;
+            }   
+        }
+        this.setCurrentMenu(1);
+    }
+
+    
     public String getString(String question)
     {
         String tmp = null;
@@ -460,62 +604,16 @@ public class Theater extends Account
         System.out.println("Customer not found.");
         return null;
     }
-    public void hireDirector()
-    {
-        if(this.plays.isEmpty())
-        {
-            System.out.println("Please enter a play before trying to hire a director.");
-            this.setCurrentMenu(1);
-            return;
-        }
-        int placement = 0;
-        for(int i=0;i<1000;i++)
-        {
-            if(this.credits[i] == null)
-            {
-                placement = i;
-                break;
-            }
-        }
-        String hiredWhichPlay, lastName, firstName, street, state; 
-        int hoursWorkedPerWeek, zip;
-        double payScalePerHour, upFrontFee, percentageOfHouse;
-        boolean actorsEquity; Date dateOfBirth; Address address;
-        firstName = this.getString("Please enter the Director's first name:  ");
-        lastName = this.getString("Please enter the Director's last name:  ");
-        dateOfBirth = this.getDate("Please enter the Director's date of birth (mm-dd-yyyy):  ");
-        street = this.getString("Please enter the Director's street address:  ");
-        state = this.getString("Please enter the Director's state:  "      );
-        zip = this.getInt("Please enter the Director's zip code:  ");
-        address = new Address(street, state, zip);
-        actorsEquity = this.getString("Does this Director's have actor's equity (y/n)?  ").startsWith("y");
-        payScalePerHour = this.getDouble("Please enter the Director's pay per hour:  ");
-        upFrontFee = this.getDouble("Please enter the Director's up front fee:  ");
-        percentageOfHouse = this.getDouble("Please enter the Director's Percentage of House:  ");
-        hiredWhichPlay = this.getString("Please enter which play the Director's was hired:  ");
-        hoursWorkedPerWeek = this.getInt("Please enter number of hours the Director works per week:  ");
-
-        this.credits[placement] = new Director(this.findPlayByName(hiredWhichPlay), payScalePerHour, actorsEquity, upFrontFee, percentageOfHouse, hoursWorkedPerWeek, lastName, firstName, dateOfBirth, address);
-        this.setCurrentMenu(1);
-    }
     public void hireManager()
     {
-        int placement = 0;
-        for(int i=0;i<1000;i++)
-        {
-            if(this.credits[i] == null)
-            {
-                placement = i;
-                break;
-            }
-        }
         String lastName, firstName, street, state; 
         int vacationWeeksTakenInMonth, zip;
         double weeklyPayRate, totalWeeksThisMonth;
-        Date dateOfBirth; Address address;
+        Date dateOfBirth, hireDate; Address address;
         firstName = this.getString("Please enter the Manager's first name:  ");
         lastName = this.getString("Please enter the Manager's last name:  ");
         dateOfBirth = this.getDate("Please enter the Manager's date of birth (mm-dd-yyyy):  ");
+        hireDate = this.getDate("Please enter the Manager's hire date (mm-dd-yyyy):  ");
         street = this.getString("Please enter the Manager's street address:  ");
         state = this.getString("Please enter the Manager's state:  "      );
         zip = this.getInt("Please enter the Manager's zip code:  ");
@@ -532,77 +630,76 @@ public class Theater extends Account
                 {
                     if (days[i] == null)
                     {
-                        days[i] = d; 
+                        days[i] = d;
+                        break;
                     }
                 }
             }
         }
-        this.credits[placement] = new Manager(weeklyPayRate, vacationWeeksTakenInMonth, totalWeeksThisMonth, days, lastName, firstName, dateOfBirth, address);
+        managers.add(new Manager(weeklyPayRate, vacationWeeksTakenInMonth, totalWeeksThisMonth, days, lastName, firstName, dateOfBirth, hireDate, address));
 
         this.setCurrentMenu(1);
+    }
+    public Position getPos()
+    {
+        for(Position p:Position.values())
+        {
+            if(this.getString("Hire for the " + p + " position(y/n)?  ").startsWith("y"))
+            {
+                return p;
+            }
+        }
+        return null;
     }
     public void hireStaff()
     {
-        int placement = 0;
-        for(int i=0;i<1000;i++)
-        {
-            if(this.credits[i] == null)
-            {
-                placement = i;
-                break;
-            }
-        }
         String lastName, firstName, street, state; 
-        int vacationWeeksTakenInMonth, zip;
-        double weeklyPayRate, totalWeeksThisMonth;
-        Date dateOfBirth; Address address;
-        firstName = this.getString("Please enter the Manager's first name:  ");
-        lastName = this.getString("Please enter the Manager's last name:  ");
-        dateOfBirth = this.getDate("Please enter the Manager's date of birth (mm-dd-yyyy):  ");
-        street = this.getString("Please enter the Manager's street address:  ");
-        state = this.getString("Please enter the Manager's state:  "      );
-        zip = this.getInt("Please enter the Manager's zip code:  ");
+        int hrsWorkedPerWeek, zip;
+        double weeklyPayRate, weeksWorkedThisMonth;
+        Date dateOfBirth, hireDate; Address address;
+        firstName = this.getString("Please enter first name:  ");
+        lastName = this.getString("Please enter last name:  ");
+        dateOfBirth = this.getDate("Please enter date of birth (mm-dd-yyyy):  ");
+        hireDate = this.getDate("Please enter hireDate (mm-dd-yyyy):  ");
+        street = this.getString("Please enter street address:  ");
+        state = this.getString("Please enter state:  "      );
+        zip = this.getInt("Please enter zip code:  ");
         address = new Address(street, state, zip);
-        weeklyPayRate = this.getDouble("Please enter the Manager's weekly pay rate:  ");
-        totalWeeksThisMonth = this.getDouble("Please enter the number of weeks this month:  ");
-        vacationWeeksTakenInMonth = this.getInt("Please enter number vacation weeks the Manager has taken this month:  ");
-
-        this.credits[placement] = new Manager(weeklyPayRate, vacationWeeksTakenInMonth, totalWeeksThisMonth, lastName, firstName, dateOfBirth, address);
-        this.setCurrentMenu(1);
-    }
-    public void fireEmployee()
-    {
-        if(credits[0] == null)
+        weeklyPayRate = this.getDouble("Please enter weekly pay rate:  ");
+        weeksWorkedThisMonth = this.getDouble("Please enter the number of weeks worked this month:  ");
+        hrsWorkedPerWeek = this.getInt("Please enter number hours worked per week:  ");
+        Days[] days = new Days[7];
+        for(Days d:Days.values())
         {
-            System.out.println("No employees to fire.");
-            this.setCurrentMenu(1);
-            return;
-        }
-        System.out.printf("Please confirm which actor/actress to fire:\n");
-        int i = 0;
-        for(Person c:credits)
-        {
-            if(this.getString(String.format("%s %s(y/n):  ",c.getFirstName(),c.getLastName())).startsWith("y")) 
+            if(this.getString("Do they work on " + d + " (y/n)?  ").startsWith("y"))
             {
-                credits[i]=null;
-                break;
+                for(int i = 0;i < days.length;i++)
+                {
+                    if (days[i] == null)
+                    {
+                        days[i] = d;
+                        break;
+                    }
+                }
             }
-            i++;
         }
+        staff.add(new Staff(this.getPos(), hrsWorkedPerWeek, weeksWorkedThisMonth, lastName, firstName, dateOfBirth, hireDate, address));
         this.setCurrentMenu(1);
     }
+
     public void addCustomer()
     {
         String lastName, firstName, street, state; 
-        int zip; Date dateOfBirth; Address address;
+        int zip; Date dateOfBirth, hireDate; Address address;
         firstName = this.getString("Please enter the customer's first name:  ");
         lastName = this.getString("Please enter the customer's last name:  ");
         dateOfBirth = this.getDate("Please enter the customer's date of birth (mm-dd-yyyy):  ");
+        hireDate = this.getDate("Please enter the customer's hire date (mm-dd-yyyy):  ");
         street = this.getString("Please enter the customer's street address:  ");
         state = this.getString("Please enter the customer's state:  ");
         zip = this.getInt("Please enter the customer's zip code:  ");
         address = new Address(street, state, zip);
-        this.attendees.add(new Customer(lastName, firstName, dateOfBirth, address));
+        this.attendees.add(new Customer(lastName, firstName, dateOfBirth, hireDate, address));
         this.setCurrentMenu(1);
     }
     public void reserveSeat()
@@ -796,5 +893,53 @@ public class Theater extends Account
     public void setCurrentMenu(int currentMenu)
     {
         this.currentMenu = currentMenu;
+    }
+
+    /**
+     * @return the friSatEvePrice
+     */
+    public double getFriSatEvePrice()
+    {
+        return friSatEvePrice;
+    }
+
+    /**
+     * @param friSatEvePrice the friSatEvePrice to set
+     */
+    public void setFriSatEvePrice(double friSatEvePrice)
+    {
+        this.friSatEvePrice = friSatEvePrice;
+    }
+
+    /**
+     * @return the sunEvePrice
+     */
+    public double getSunEvePrice()
+    {
+        return sunEvePrice;
+    }
+
+    /**
+     * @param sunEvePrice the sunEvePrice to set
+     */
+    public void setSunEvePrice(double sunEvePrice)
+    {
+        this.sunEvePrice = sunEvePrice;
+    }
+
+    /**
+     * @return the satSunMatPrice
+     */
+    public double getSatSunMatPrice()
+    {
+        return satSunMatPrice;
+    }
+
+    /**
+     * @param satSunMatPrice the satSunMatPrice to set
+     */
+    public void setSatSunMatPrice(double satSunMatPrice)
+    {
+        this.satSunMatPrice = satSunMatPrice;
     }
 }

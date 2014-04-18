@@ -24,9 +24,9 @@ public class Investor extends Person
     private int ticketsRecieved;
     private double percentageOfHouse;
 
-    public Investor(double amountInvested, int ticketsRecieved, double percentageOfHouse, String lastName, String firstName, Date dateOfBirth, Address address)
+    public Investor(double amountInvested, int ticketsRecieved, double percentageOfHouse, String lastName, String firstName, Date dateOfBirth, Date hireDate, Address address)
     {
-        super(lastName, firstName, dateOfBirth, address);
+        super(lastName, firstName, dateOfBirth, hireDate, address);
         this.amountInvested = amountInvested;
         this.ticketsRecieved = ticketsRecieved;
         this.percentageOfHouse = percentageOfHouse;

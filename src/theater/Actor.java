@@ -31,9 +31,9 @@ public class Actor extends Person implements CalculatePay
      * @param roleName Set the role the Actor/Actress plays
      * @param hoursWorkedPerWeek Set the hours worked per week
      */    
-    public Actor(int hoursWorkedPerWeek, int hiredWhichPlay, String roleName, double payScalePerHour, boolean actorsEquity, String lastName, String firstName, Date dateOfBirth, Address address)
+    public Actor(int hoursWorkedPerWeek, int hiredWhichPlay, String roleName, double payScalePerHour, boolean actorsEquity, String lastName, String firstName, Date dateOfBirth, Date hireDate, Address address)
     {
-        super(lastName, firstName, dateOfBirth, address);
+        super(lastName, firstName, dateOfBirth,  hireDate, address);
         this.hoursWorkedPerWeek = hoursWorkedPerWeek;
         this.hiredWhichPlay = hiredWhichPlay;
         this.roleName = roleName;

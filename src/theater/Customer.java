@@ -23,8 +23,8 @@ public class Customer extends Person
      * @param address Set the Address of Person
      * @param lastName Set the Last name of Person
      */
-    public Customer(String lastName, String firstName, Date dateOfBirth, Address address) {
-        super(lastName, firstName, dateOfBirth, address);
+    public Customer(String lastName, String firstName, Date dateOfBirth, Date hireDate, Address address) {
+        super(lastName, firstName, dateOfBirth, hireDate, address);
     }
 //	private Date dateToAttend;	// Date of Attendance
 //	private int seatId;		// Which seat are they in?

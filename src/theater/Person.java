@@ -21,6 +21,7 @@ public class Person extends Account
 	private int pID;			// ID for Person
 	static private int IDPool;		// Incremented each time a Person is created, then assigned to its ID.
 	private Date dateOfBirth;		// Date of Birth of Person
+        private Date hireDate;                  // Hard to say really...
 	private Address address;		// Address of Person
 
 
@@ -30,10 +31,11 @@ public class Person extends Account
      * @param address Set the Address of Person
      * @param lastName Set the Last name of Person
      */
-    public Person(String lastName, String firstName, Date dateOfBirth, Address address) {
+    public Person(String lastName, String firstName, Date dateOfBirth, Date hireDate, Address address) {
         this.lastName = lastName;
         this.firstName = firstName;
         this.dateOfBirth = dateOfBirth;
+        this.hireDate = hireDate;
         this.address = address;
         
         IDPool++;
@@ -106,6 +108,16 @@ public class Person extends Account
      */
     public int getpID() {
         return pID;
+    }
+
+    public Date getHireDate()
+    {
+        return hireDate;
+    }
+
+    public void setHireDate(Date hireDate)
+    {
+        this.hireDate = hireDate;
     }
 
 }

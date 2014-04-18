@@ -33,13 +33,13 @@ public class Staff extends Person
     private double weeksWorkedThisMonth;
     private int manager;
 
-    public Staff(Position position, int hrsWorkedPerWeek, double weeksWorkedThisMonth, String hiredWhichPlay, double payScalePerHour, boolean actorsEquity, String lastName, String firstName, Date dateOfBirth, Address address, int manager)
+    public Staff(Position position, int hrsWorkedPerWeek, double weeksWorkedThisMonth, String lastName, String firstName, Date dateOfBirth, Date hireDate, Address address)
     {
-        super(lastName, firstName, dateOfBirth, address);
+        super(lastName, firstName, dateOfBirth, hireDate, address);
         this.position = position;
         this.hrsWorkedPerWeek = hrsWorkedPerWeek;
         this.weeksWorkedThisMonth = weeksWorkedThisMonth;
-        this.manager = manager;
+        //this.manager = manager;
         
     }
 

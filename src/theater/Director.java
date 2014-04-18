@@ -46,9 +46,9 @@ public class Director extends Person implements CalculatePay
         private double percentageOfHouse;
         private int hoursWorkedPerWeek;
 
-    public Director(int hiredWhichPlay, double payPerHour, boolean actorsEquity, double upFrontFee, double percentageOfHouse, int hoursWorkedPerWeek, String lastName, String firstName, Date dateOfBirth, Address address)
+    public Director(int hiredWhichPlay, double payPerHour, boolean actorsEquity, double upFrontFee, double percentageOfHouse, int hoursWorkedPerWeek, String lastName, String firstName, Date dateOfBirth, Date hireDate, Address address)
     {
-        super(lastName, firstName, dateOfBirth, address);
+        super(lastName, firstName, dateOfBirth, hireDate, address);
         this.hiredWhichPlay = hiredWhichPlay;
         this.payPerHour = payPerHour;
         this.actorsEquity = actorsEquity;
