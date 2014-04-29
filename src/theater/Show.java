@@ -21,15 +21,15 @@ public class Show
         private List<Seat> boxSeats;    // Box seats for the show
         private List<Seat> regSeats;    // Regular seats for the show
 	private int whichPlay;          // Which play attended by ID?
-        private boolean matinee;        // Is this play a matinee?
+        private SHOWTIME showTime;        // Is this play a matinee?
 
-    public Show(Date showDate, int boxSeats, int regSeats, int whichPlay, boolean matinee)
+    public Show(Date showDate, int boxSeats, int regSeats, int whichPlay, SHOWTIME showTime)
     {
         this.showDate = showDate;
         this.boxSeats = new ArrayList();
         this.regSeats = new ArrayList();
         this.whichPlay = whichPlay;
-        this.matinee = matinee;
+        this.showTime = showTime;
         double tmp1;
         tmp1 = this.getBoxSeatPrice();
         for(int i=0;i<boxSeats;i++)
@@ -86,7 +86,7 @@ public class Show
         public int getBoxSeatAvailble()
         {
             int tmp = 0;
-            for(Seat s:this.boxSeats)
+            for(Seat s:this.getBoxSeats())
             {
                 if(s.getCustomer() == 0)
                     tmp++;
@@ -96,7 +96,7 @@ public class Show
         
         public boolean reserveBoxSeat(int pID)
         {
-            for(Seat s:this.boxSeats)
+            for(Seat s:this.getBoxSeats())
             {
                 if(s.getCustomer() == 0)
                 {
@@ -109,7 +109,7 @@ public class Show
         public int getRegSeatAvailble()
         {
             int tmp = 0;
-            for(Seat s:this.regSeats)
+            for(Seat s:this.getRegSeats())
             {
                 if(s.getCustomer() == 0)
                     tmp++;
@@ -119,7 +119,7 @@ public class Show
         
         public boolean reserveRegSeat(int pID)
         {
-            for(Seat s:this.regSeats)
+            for(Seat s:this.getRegSeats())
             {
                 if(s.getCustomer() == 0)
                 {
@@ -154,10 +154,58 @@ public class Show
     }
 
     /**
-     * @return the matinee
+     * @return the boxSeats
      */
-    public boolean isMatinee()
+    public List<Seat> getBoxSeats()
     {
-        return matinee;
+        return boxSeats;
+    }
+
+    /**
+     * @param boxSeats the boxSeats to set
+     */
+    public void setBoxSeats(List<Seat> boxSeats)
+    {
+        this.boxSeats = boxSeats;
+    }
+
+    /**
+     * @return the regSeats
+     */
+    public List<Seat> getRegSeats()
+    {
+        return regSeats;
+    }
+
+    /**
+     * @param regSeats the regSeats to set
+     */
+    public void setRegSeats(List<Seat> regSeats)
+    {
+        this.regSeats = regSeats;
+    }
+
+    /**
+     * @param whichPlay the whichPlay to set
+     */
+    public void setWhichPlay(int whichPlay)
+    {
+        this.whichPlay = whichPlay;
+    }
+
+    /**
+     * @return the showTime
+     */
+    public SHOWTIME getShowTime()
+    {
+        return showTime;
+    }
+
+    /**
+     * @param showTime the showTime to set
+     */
+    public void setShowTime(SHOWTIME showTime)
+    {
+        this.showTime = showTime;
     }
 }

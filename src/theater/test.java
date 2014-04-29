@@ -21,33 +21,21 @@ public class test {
         Theater theTheater;
         
         System.out.println("Welcome to the half-baked theater management system!");
-        System.out.println("Please complete the initial informational survey and then choose an option from the menu.");
-        String tmp1, tmp2, tmp3;
-        tmp1 = new String(); tmp2 = new String(); tmp3 = new String();
-        System.out.printf("Please enter your theater's name:  ");
-        BufferedReader inPut;
-        inPut = new BufferedReader(new InputStreamReader(System.in));
-        try 
+        if(Theater.getString("Would you like to load initial Theater info from file (y/n)?").startsWith("y"))
         {
-            tmp1 = inPut.readLine();
+            theTheater = new Theater(FromFile.readTheaterPlay());
         }
-        catch(IOException ioe)
+        else
         {
-            System.out.println("IO error trying to read line.");
-            System.exit(1);
+            System.out.println("Please complete the initial informational survey and then choose an option from the menu.");
+            String tmp1;
+            double tmp2;
+            tmp1 = Theater.getString("Please enter your theater's name:  "); 
+            tmp2 = Theater.getDouble("Please enter the monthly cost to rent your theater (include utilities):  ");
+            theTheater = new Theater(tmp1,tmp2);
+            theTheater.getTheaterInformation();
         }
-        System.out.printf("Please enter the monthly cost to rent your theater (include utilities):  ");
-        try 
-        {
-            tmp2 = inPut.readLine();
-        }
-        catch(IOException ioe)
-        {
-            System.out.println("IO error trying to read line.");
-            System.exit(1);
-        }
-        theTheater = new Theater(tmp1,Double.parseDouble(tmp2));
-        theTheater.getTheaterInformation();
+
         //Hire/Fire an actor or director
         //Add Play/Show/Item
         //Sell ticket -> Add Customer/Sell Seat

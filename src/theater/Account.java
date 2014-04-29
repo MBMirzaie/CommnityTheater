@@ -112,5 +112,13 @@ public class Account
     {
         return accountNumber;
     }
+
+    /**
+     * @param accountNumber the accountNumber to set
+     */
+    public void setAccountNumber(int accountNumber)
+    {
+        this.accountNumber = accountNumber;
+    }
     
 }

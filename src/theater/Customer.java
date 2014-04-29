@@ -16,7 +16,6 @@ import java.util.*;
 
 public class Customer extends Person
 {
-
     /**
      * @param firstName Set the First name of Person
      * @param dateOfBirth Set the Date of Birth of Person

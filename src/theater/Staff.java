@@ -11,34 +11,35 @@ import java.util.Date;
 /**
  * The theater Staff member class has the following attributes 	
  * <P>
- * Inherits data fields from person class
- * 5. Work position			USHER (enum with TICKETSELLER, CONCESSIONS)
- * 6. Pay scale per hour			$8.25
- * 7. Hours worked per week		22
- * 8. Days worked each week		THURSDAY, SATURDAY  (enum type of all days)
- * 9. Number of weeks worked this month	4.5  (one extra Thursday worked)
- *
- * The method for CalculatePay for a theater staff member is to pass in the pay 
- * scale per hour, the hours worked for week, and a number of weeks worked in the 
- * current month.  The theater staff member's pay monthly pay is :  
- * pay per hour * hours per week * weeks worked in current month
- * <P>
+ Inherits data fields from person class
+ 5. Work position			USHER (enum with TICKETSELLER, CONCESSIONS)
+ 6. Pay scale per hour			$8.25
+ 7. Hours worked per week		22
+ 8. DAYS worked each week		THURSDAY, SATURDAY  (enum type of all days)
+ 9. Number of weeks worked this month	4.5  (one extra Thursday worked)
+
+ The method for CalculatePay for a theater staff member is to pass in the pay 
+ scale per hour, the hours worked for week, and a number of weeks worked in the 
+ current month.  The theater staff member's pay monthly pay is :  
+ pay per hour * hours per week * weeks worked in current month
+ <P>
  * @author Marcus Mirzaie <marcus.mirzaie@mavs.uta.edu>
  */
 public class Staff extends Person
 {
-    private Position position;
+    private POSITION position;
     private int hrsWorkedPerWeek;
-    private Days[] days = new Days[7];
+    private DAYS[] days = new DAYS[7];
     private double weeksWorkedThisMonth;
-    private int manager;
+    private double payPerHour;
 
-    public Staff(Position position, int hrsWorkedPerWeek, double weeksWorkedThisMonth, String lastName, String firstName, Date dateOfBirth, Date hireDate, Address address)
+    public Staff(POSITION position, int hrsWorkedPerWeek, double weeksWorkedThisMonth, double payPerHour, String lastName, String firstName, Date dateOfBirth, Date hireDate, Address address)
     {
         super(lastName, firstName, dateOfBirth, hireDate, address);
         this.position = position;
         this.hrsWorkedPerWeek = hrsWorkedPerWeek;
         this.weeksWorkedThisMonth = weeksWorkedThisMonth;
+        this.payPerHour = payPerHour;
         //this.manager = manager;
         
     }
@@ -46,7 +47,7 @@ public class Staff extends Person
     /**
      * @return the position
      */
-    public Position getPosition()
+    public POSITION getPosition()
     {
         return position;
     }
@@ -54,7 +55,7 @@ public class Staff extends Person
     /**
      * @param position the position to set
      */
-    public void setPosition(Position position)
+    public void setPosition(POSITION position)
     {
         this.position = position;
     }
@@ -78,7 +79,7 @@ public class Staff extends Person
     /**
      * @return the days
      */
-    public Days[] getDays()
+    public DAYS[] getDays()
     {
         return days;
     }
@@ -86,7 +87,7 @@ public class Staff extends Person
     /**
      * @param days the days to set
      */
-    public void setDays(Days[] days)
+    public void setDays(DAYS[] days)
     {
         this.days = days;
     }
@@ -107,27 +108,27 @@ public class Staff extends Person
         this.weeksWorkedThisMonth = weeksWorkedThisMonth;
     }
 
-    /**
-     * @return the manager
-     */
-    public int getManager()
-    {
-        return manager;
-    }
-
-    /**
-     * @param manager the manager to set
-     */
-    public void setManager(int manager)
-    {
-        this.manager = manager;
-    }
-
     @Override
     public String toString()
     {
         //return "Staff{" + "position=" + position + ", hrsWorkedPerWeek=" + hrsWorkedPerWeek + ", days=" + days + ", weeksWorkedThisMonth=" + weeksWorkedThisMonth + ", manager=" + manager + '}';
-        return  position + "|" + hrsWorkedPerWeek + "|" + days + "|" + weeksWorkedThisMonth + "|" + manager;
+        return  position + "|" + hrsWorkedPerWeek + "|" + days + "|" + weeksWorkedThisMonth + "|" + payPerHour;
+    }
+
+    /**
+     * @return the payPerHour
+     */
+    public double getPayPerHour()
+    {
+        return payPerHour;
+    }
+
+    /**
+     * @param payPerHour the payPerHour to set
+     */
+    public void setPayPerHour(double payPerHour)
+    {
+        this.payPerHour = payPerHour;
     }
     
     

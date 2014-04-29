@@ -39,14 +39,14 @@ import java.util.Date;
  */
 public class Director extends Person implements CalculatePay
 {
-	private int hiredWhichPlay;		// Which play was this theater person hired on?
+	private String hiredWhichPlay;		// Which play was this theater person hired on?
         private double payPerHour;
         private boolean actorsEquity;
         private double upFrontFee;
         private double percentageOfHouse;
         private int hoursWorkedPerWeek;
 
-    public Director(int hiredWhichPlay, double payPerHour, boolean actorsEquity, double upFrontFee, double percentageOfHouse, int hoursWorkedPerWeek, String lastName, String firstName, Date dateOfBirth, Date hireDate, Address address)
+    public Director(String hiredWhichPlay, double payPerHour, boolean actorsEquity, double upFrontFee, double percentageOfHouse, int hoursWorkedPerWeek, String lastName, String firstName, Date dateOfBirth, Date hireDate, Address address)
     {
         super(lastName, firstName, dateOfBirth, hireDate, address);
         this.hiredWhichPlay = hiredWhichPlay;
@@ -60,7 +60,7 @@ public class Director extends Person implements CalculatePay
     /**
      * @return the hiredWhichPlay
      */
-    public int getHiredWhichPlay()
+    public String getHiredWhichPlay()
     {
         return hiredWhichPlay;
     }
@@ -68,7 +68,7 @@ public class Director extends Person implements CalculatePay
     /**
      * @param hiredWhichPlay the hiredWhichPlay to set
      */
-    public void setHiredWhichPlay(int hiredWhichPlay)
+    public void setHiredWhichPlay(String hiredWhichPlay)
     {
         this.hiredWhichPlay = hiredWhichPlay;
     }

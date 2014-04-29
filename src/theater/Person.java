@@ -120,4 +120,12 @@ public class Person extends Account
         this.hireDate = hireDate;
     }
 
+    /**
+     * @param pID the pID to set
+     */
+    public void setpID(int pID)
+    {
+        this.pID = pID;
+    }
+
 }

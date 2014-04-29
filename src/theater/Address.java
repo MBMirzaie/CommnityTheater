@@ -15,13 +15,13 @@ package theater;
 public class Address 
 {
 	private String street;		// Street of Address
-	private String state;		// State of Address
-	private int zipCode;		// Zip Code of Address
+	private String city;		// State of Address
+	private String stateZip;	// Zip Code of Address
 
-    public Address(String street, String state, int zipCode) {
+    public Address(String street, String city, String stateZip) {
         this.street = street;
-        this.state = state;
-        this.zipCode = zipCode;
+        this.city = city;
+        this.stateZip = stateZip;
     }
 
     public String getStreet() {
@@ -32,25 +32,41 @@ public class Address
         this.street = street;
     }
 
-    public String getState() {
-        return state;
-    }
-
-    public void setState(String state) {
-        this.state = state;
-    }
-
-    public int getZipCode() {
-        return zipCode;
-    }
-
-    public void setZipCode(int zipCode) {
-        this.zipCode = zipCode;
-    }
-
     @Override
     public String toString() {
-        return street + "|" + state + "|" + zipCode;
+        return street + "|" + city + "|" + stateZip;
+    }
+
+    /**
+     * @return the city
+     */
+    public String getCity()
+    {
+        return city;
+    }
+
+    /**
+     * @param city the city to set
+     */
+    public void setCity(String city)
+    {
+        this.city = city;
+    }
+
+    /**
+     * @return the stateZip
+     */
+    public String getStateZip()
+    {
+        return stateZip;
+    }
+
+    /**
+     * @param stateZip the stateZip to set
+     */
+    public void setStateZip(String stateZip)
+    {
+        this.stateZip = stateZip;
     }
        
 }

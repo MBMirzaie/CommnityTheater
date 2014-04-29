@@ -21,6 +21,8 @@ public class Play
 	private int yearPublished;		// Year Play was published
 	private boolean WorldPremier;		// Is this the world premier for the play?
 	private double playRental;		// Cost per show to rent play
+        private Date openingDate;
+        private Date closingDate;
         private int pID;                        // Unique ID for the play
         private static int iDPool = 0;          // Play ID Pool
         
@@ -37,13 +39,15 @@ public class Play
      * @param yearPublished set the year the play was published
      * @param author set the author of the play
      */
-    public Play(String name, String author, int yearPublished, boolean WorldPremier, double playRental) 
+    public Play(String name, String author, int yearPublished, boolean WorldPremier, double playRental, Date openingDate, Date closingDate) 
     {
         this.name = name;
         this.author = author;
         this.yearPublished = yearPublished;
         this.WorldPremier = WorldPremier;
         this.playRental = playRental;
+        this.openingDate = openingDate;
+        this.closingDate = closingDate;
         Play.iDPool++;
         pID = iDPool;
         
@@ -155,6 +159,38 @@ public class Play
     public int getpID()
     {
         return pID;
+    }
+
+    /**
+     * @return the openingDate
+     */
+    public Date getOpeningDate()
+    {
+        return openingDate;
+    }
+
+    /**
+     * @param openingDate the openingDate to set
+     */
+    public void setOpeningDate(Date openingDate)
+    {
+        this.openingDate = openingDate;
+    }
+
+    /**
+     * @return the closingDate
+     */
+    public Date getClosingDate()
+    {
+        return closingDate;
+    }
+
+    /**
+     * @param closingDate the closingDate to set
+     */
+    public void setClosingDate(Date closingDate)
+    {
+        this.closingDate = closingDate;
     }
 
     

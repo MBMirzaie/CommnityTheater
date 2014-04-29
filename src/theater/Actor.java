@@ -14,7 +14,7 @@ import java.util.Date;
  */
 public class Actor extends Person implements CalculatePay
 {
-	private int hiredWhichPlay;		// Which play was this person hired for?
+	private String hiredWhichPlay;		// Which play was this person hired for?
 	private String roleName;		// Role name the actor plays
         private double payScalePerHour;
         private boolean actorsEquity;
@@ -31,7 +31,7 @@ public class Actor extends Person implements CalculatePay
      * @param roleName Set the role the Actor/Actress plays
      * @param hoursWorkedPerWeek Set the hours worked per week
      */    
-    public Actor(int hoursWorkedPerWeek, int hiredWhichPlay, String roleName, double payScalePerHour, boolean actorsEquity, String lastName, String firstName, Date dateOfBirth, Date hireDate, Address address)
+    public Actor(int hoursWorkedPerWeek, String hiredWhichPlay, String roleName, double payScalePerHour, boolean actorsEquity, String lastName, String firstName, Date dateOfBirth, Date hireDate, Address address)
     {
         super(lastName, firstName, dateOfBirth,  hireDate, address);
         this.hoursWorkedPerWeek = hoursWorkedPerWeek;
@@ -60,7 +60,7 @@ public class Actor extends Person implements CalculatePay
     /**
      * @return the hiredWhichPlay
      */
-    public int getHiredWhichPlay()
+    public String getHiredWhichPlay()
     {
         return hiredWhichPlay;
     }
@@ -68,7 +68,7 @@ public class Actor extends Person implements CalculatePay
     /**
      * @param hiredWhichPlay the hiredWhichPlay to set
      */
-    public void setHiredWhichPlay(int hiredWhichPlay)
+    public void setHiredWhichPlay(String hiredWhichPlay)
     {
         this.hiredWhichPlay = hiredWhichPlay;
     }
